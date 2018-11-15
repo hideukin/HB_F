@@ -1,4 +1,4 @@
-RSpec.describe RssFilterHatebu do
+RSpec.describe Main do
   it "has a version number" do
     expect(RssFilterHatebu::VERSION).not_to be nil
   end

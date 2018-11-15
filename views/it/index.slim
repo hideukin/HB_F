@@ -1,0 +1,9 @@
+h2 テクノロジー用
+
+a href="#{@feed_url}" #{@feed_url}
+br
+- @rss.each do |entry|
+  ul
+    a href="#{entry.link}" #{entry.title}
+    entry.content
+    a href="#{entry.bookmarkurl}"  #{entry.bookmarkcount} user
