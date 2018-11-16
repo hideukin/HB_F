@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'rss'
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 require 'slim'
 
 require_relative 'models/entry'
