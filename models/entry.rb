@@ -1,7 +1,9 @@
+# エントリークラス
+# RSS フィードのエントリー
 class Entry
   attr_accessor :title, :link, :description, :date, :bookmarkcount, :imageurl, :content, :bookmarkurl
 
-  DEFAULT_FILTER_COUNT = 100.freeze
+  DEFAULT_FILTER_COUNT = 100
 
   def initialize(title:, link:, description:, date:, bookmarkcount:, imageurl:, content:, bookmarkurl:)
     @title = title
@@ -14,10 +16,9 @@ class Entry
     @bookmarkurl = bookmarkurl
   end
 
-  # 引数に指定したカウントよりも大きければブックマークカウント数を返却する
-  # 小さければ nil を返却する
+  # 引数に指定したカウントよりも小さければ true を返却する
   # 引数がなければ デフォルトのフィルタ数 をセットして判定する
-  def filter(count = DEFAULT_FILTER_COUNT)
-    @bookmarkcount.to_i >= count ? @bookmarkcount : nil
+  def count_under?(count = DEFAULT_FILTER_COUNT)
+    @bookmarkcount.to_i < count
   end
 end

@@ -12,11 +12,11 @@ FILTER_COUNT_ALL = 250
 FILTER_COUNT_IT = 100
 HOTENTRY_URL = 'http://b.hatena.ne.jp/hotentry.rss'.freeze
 IT_URL = 'http://b.hatena.ne.jp/hotentry/it.rss'.freeze
-@hotentry_url = url('all')
-@it_url = url('it')
 
 # routing
 get '/' do
+  @hotentry_url = url('all')
+  @it_url = url('it')
   slim :index
 end
 
@@ -60,7 +60,7 @@ end
 # @rss: エントリーの配列
 def filter_rss(uri, filter_count)
   @rss = get_rss_nokogiri uri
-  @rss.delete_if { |entry| entry.bookmarkcount.to_i < filter_count.to_i }
+  @rss.delete_if { |entry| entry.count_under?(filter_count.to_i) }
 end
 
 # 引数のコンテンツに対し、画像タグとフレームタグを追加する

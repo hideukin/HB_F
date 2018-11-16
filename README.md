@@ -1,5 +1,5 @@
-# RssFilterHatebu
-指定したカウント数でフィルタしたRSSフィードを返す
+# HB!F
+指定したカウント数でフィルタしたRSSフィードを返すサイト
 
 ## Installation
 ```ruby
