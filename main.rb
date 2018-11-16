@@ -68,9 +68,8 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_content(content, bookmarkurl)
-  cite = '<cite><img src="' + bookmarkurl + '" /></cite>'
-  iframe = '<iframe src="' + bookmarkurl + '" width="100%" height="100%"></iframe>'
-  cite + content + iframe
+  iframe = '<iframe src="' + bookmarkurl + '></iframe>'
+  content + iframe
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
@@ -144,7 +143,11 @@ def maker_feed(uri)
       item.title = entry.title
       item.link = entry.link
       item.date = entry.date
-      item.description = entry.content
+      item.description = entry.description
+      item.summary do |summary|
+        summary.type = 'html'
+        summary.content = entry.content
+      end
     end
   end
 end

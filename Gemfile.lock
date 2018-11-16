@@ -12,9 +12,12 @@ GEM
     eventmachine (1.2.7)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.3)
+    nokogiri (1.8.5)
+      mini_portile2 (~> 2.3.0)
     rack (2.0.6)
     rack-protection (2.0.4)
       rack
@@ -48,6 +51,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  nokogiri
   sinatra
   sinatra-contrib
   slim
