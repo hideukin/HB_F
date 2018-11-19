@@ -4,13 +4,24 @@ html lang="ja"
     meta charset="utf-8"
     meta name="keywords" content="template language"
     title HB!F
+    link href="https://unpkg.com/ress/dist/ress.min.css" rel="stylesheet" type="text/css"
+    link href="/css/css.css" rel="stylesheet" type="text/css"
     link href="/favicon.png" rel="icon" type="image/png"
   body
-    h1 HB!F
-    h3 はてなブックマーク RSSフィルタ
+    header
+      h1 HB!F
+      h3 はてなブックマーク RSSフィルタ
+    nav
+      ul
+        li
+          a href="/" TOP
+        li
+          a href="/all" 総合
+        li
+          a href="/it" テクノロジー
+
     == yield
 
-    br
-    br
-    div id="footer"
-      | Copyright &copy; 2018 hideukin
+    footer
+      small
+        | Copyright &copy; 2018 hideukin

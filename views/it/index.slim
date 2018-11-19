@@ -1,9 +1,12 @@
-h4 テクノロジー用
-
-a href="#{@feed_url}" #{@feed_url}
-br
-- @rss.each do |entry|
-  ul
-    a href="#{entry.link}" #{entry.title}
-    entry.content
-    a href="#{entry.bookmarkurl}"  #{entry.bookmarkcount} user
+section
+  article
+    span テクノロジーフィード :  
+    a href="#{@feed_url}" #{@feed_url}
+    br
+    br
+    - @rss.each do |entry|
+      ul.entry-frame
+        a.entry-title href="#{entry.link}" #{entry.title}
+        a.entry-bookmarkcount href="#{entry.bookmarkurl}" #{entry.bookmarkcount} user
+        div.entry-description
+          span #{entry.description}
