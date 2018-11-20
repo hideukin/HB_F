@@ -8,6 +8,9 @@ require 'slim'
 require_relative 'models/entry'
 require_relative 'constant'
 
+before do
+  @categories = Constant::CATEGORY
+end
 # routing
 get '/' do
   slim :index
@@ -17,21 +20,13 @@ get '/:category/preview' do
   url = get_hatebu_url params['category']
   filter_rss(url, params[:threshold]&.to_i)
   get_feed_url request.url
-  @categories = Constant::CATEGORY
   slim :'preview/index'
 end
 
-get '/all/feed' do
-  filter_rss(Constant::ALL_URL, params[:threshold]&.to_i)
-  maker_feed(Constant::ALL_URL)
-
-  content_type 'application/xml'
-  @feed.to_s
-end
-
-get '/it/feed' do
-  filter_rss(Constant::IT_URL, params[:threshold]&.to_i)
-  maker_feed(Constant::IT_URL)
+get '/:category/feed' do
+  url = get_hatebu_url params['category']
+  filter_rss(url, params[:threshold]&.to_i)
+  maker_feed(url)
 
   content_type 'application/xml'
   @feed.to_s

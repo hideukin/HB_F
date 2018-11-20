@@ -1,8 +1,14 @@
 section
   article
-    span フィード :  
+    span フィード : /
     a href="#{@feed_url}" #{@feed_url}
     br
+    form action="preview" method="GET"
+      div
+        | ブックマークカウント数
+        input name="threshold" type="text" value="" /
+      div
+      input type="submit" value="フィルタ" /
     br
     - @rss.each do |entry|
       ul.entry-frame
