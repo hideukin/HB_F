@@ -6,52 +6,46 @@ require 'sinatra/reloader' if development?
 require 'slim'
 
 require_relative 'models/entry'
-
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv 11.0) like Gecko'.freeze
-FILTER_COUNT_ALL = 250
-FILTER_COUNT_IT = 100
-HOTENTRY_URL = 'http://b.hatena.ne.jp/hotentry.rss'.freeze
-IT_URL = 'http://b.hatena.ne.jp/hotentry/it.rss'.freeze
+require_relative 'constant'
 
 # routing
 get '/' do
-  @hotentry_url = url('all')
-  @it_url = url('it')
   slim :index
 end
 
-get '/all' do
-  filter_rss(HOTENTRY_URL, params[:threshold]&.to_i)
+get '/:category/preview' do
+  url = get_hatebu_url params['category']
+  filter_rss(url, params[:threshold]&.to_i)
   get_feed_url request.url
-  slim :'all/index'
-end
-
-get '/it' do
-  filter_rss(IT_URL, params[:threshold]&.to_i)
-  get_feed_url request.url
-  slim :'it/index'
+  slim :'preview/index'
 end
 
 get '/all/feed' do
-  filter_rss(HOTENTRY_URL, params[:threshold]&.to_i)
-  maker_feed(HOTENTRY_URL)
+  filter_rss(Constant::ALL_URL, params[:threshold]&.to_i)
+  maker_feed(Constant::ALL_URL)
 
   content_type 'application/xml'
   @feed.to_s
 end
 
 get '/it/feed' do
-  filter_rss(IT_URL, params[:threshold]&.to_i)
-  maker_feed(IT_URL)
+  filter_rss(Constant::IT_URL, params[:threshold]&.to_i)
+  maker_feed(Constant::IT_URL)
 
   content_type 'application/xml'
   @feed.to_s
 end
 
+# 引数からはてなブックマークのフィードURLを取得する
+# category: カテゴリ名
+def get_hatebu_url(category)
+  eval('Constant::' + category.upcase + '_URL')
+end
+
 # フィードのURLを生成する
 # @feed_url: フィード用のURL
 def get_feed_url(url)
-  @feed_url = url.include?('?') ? url.gsub!(/\?/, '/feed?') : url.gsub!(/$/, '/feed')
+  @feed_url = url.include?('preview') ? url.gsub!(/preview/, 'feed') : nil
 end
 
 # 対象となるはてなブックマーク RSS フィードから指定したブックマークカウントでフィルタを行う
@@ -113,7 +107,7 @@ end
 # return: エントリー情報の配列
 def get_rss_nokogiri(uri)
   # open-uriにユーザーエージェントをセット
-  opt = { 'User-Agent' => USER_AGENT }
+  opt = { 'User-Agent' => Constant::USER_AGENT }
 
   @xml_doc = Nokogiri::XML.parse(open(uri, opt))
 
