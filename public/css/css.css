@@ -31,6 +31,13 @@ a:hover {
 	transition: all 0.5s;
 }
 
+img.rss{
+    margin-right: 10px;
+	margin-left: 10px;
+	width: 25px;
+	height: 25px;
+}
+
 .entry-bookmarkcount {
     padding: 3px 6px;
     margin-right: 8px;
@@ -182,7 +189,6 @@ article .btn{
 	margin-left: 10px;
 	margin-right: 10px;
 	border-radius: 5px;	/*線の角を丸くする*/
-	letter-spacing: 5px;	/*文字と文字の間隔をあける*/
 	text-decoration: none;	/*ブラウザ標準のリンク装飾をオフに*/
 }
 article .btn:hover{
