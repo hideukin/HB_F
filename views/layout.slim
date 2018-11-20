@@ -15,10 +15,9 @@ html lang="ja"
       ul
         li
           a href="/" TOP
-        li
-          a href="/all/preview" 総合
-        li
-          a href="/it/preview" テクノロジー
+        - @categories.each do |key, value|
+          li
+            a href="/#{key}/preview" #{value}
 
     == yield
 

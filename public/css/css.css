@@ -109,12 +109,12 @@ nav{
 	overflow: hidden;	/*おまじない*/
 }
 nav ul{
-	width: 60%;	/*横幅の指定*/
+	width: 95%;	/*横幅の指定*/
 	margin: auto;	/*中央に配置する*/
 	list-style: none; /*リストのスタイルを削除*/
 }
 nav li{
-	width: calc(100% / 4);	/*横幅の指定*/
+	width: 9%;	/*横幅の指定*/
 	border-left: 1px solid #01A4DE;	/*線を描く*/
 	box-sizing: border-box; /*線の幅をliの横幅に含める*/
 	text-align: center;	/*文字を中央に*/
@@ -126,11 +126,11 @@ nav li:last-child{
 nav a{
 	display: block;	/*1つのli全体にリンクを有効にする*/
 	text-decoration: none;	/*ブラウザ標準のリンク装飾をオフに*/
-	color:#313131;	/*文字色の変更*/
-	font-size: 110%;	/*フォントサイズの指定*/
-	letter-spacing: 5px;	/*文字と文字の間隔をあける*/
-	font-weight: 400;	/*文字の太さを調整*/
-	line-height: 45px;	/*行間の指定（ナビボタンの高さ指定）*/
+	color: blue;	/*文字色の変更*/
+	font-size: 60%;	/*フォントサイズの指定*/
+	letter-spacing: 3px;	/*文字と文字の間隔をあける*/
+	font-weight: 600;	/*文字の太さを調整*/
+	line-height: 40px;	/*行間の指定（ナビボタンの高さ指定）*/
 }
 nav a:hover{
 	background-color: #01A4DE;	/*背景色の指定*/

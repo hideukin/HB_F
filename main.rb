@@ -17,6 +17,7 @@ get '/:category/preview' do
   url = get_hatebu_url params['category']
   filter_rss(url, params[:threshold]&.to_i)
   get_feed_url request.url
+  @categories = Constant::CATEGORY
   slim :'preview/index'
 end
 
