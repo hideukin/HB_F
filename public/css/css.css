@@ -46,6 +46,10 @@ a:hover {
 a:visited.entry-bookmarkcount {
     color: white;
 }
+a:hover.entry-bookmarkcount {
+    color: white;
+    background-color: orange;
+}
 .entry-frame {
     padding: 10px 10px;
     margin: 10px;
@@ -161,19 +165,25 @@ article p{
 	margin-bottom: 10px;	/*文字とボタンの間をあける*/
 	float: left;	/*フロートする*/
 }
+article .text{
+	border: 1px solid orange;	/*線を描く（ホバー時のずれを防ぐため）*/
+	border-radius: 3px;	/*線の角を丸くする*/
+	margin-left: 10px;
+	margin-right: 10px;
+}
 article .btn{
 	color: #fff;	/*文字色の変更*/
 	border: 1px solid orange;	/*線を描く（ホバー時のずれを防ぐため）*/
 	background-color: orange;	/*背景色の指定*/
-	padding-top: 10px;	/*文字上部の余白を指定*/
-	padding-bottom: 10px;	/*文字下部の余白を指定*/
-	padding-right: 30px;	/*文字右側の余白を指定*/
-	padding-left: 30px;	/*文字左側の余白を指定*/
+	padding-top: 5px;	/*文字上部の余白を指定*/
+	padding-bottom: 5px;	/*文字下部の余白を指定*/
+	padding-right: 20px;	/*文字右側の余白を指定*/
+	padding-left: 20px;	/*文字左側の余白を指定*/
+	margin-left: 10px;
+	margin-right: 10px;
 	border-radius: 5px;	/*線の角を丸くする*/
 	letter-spacing: 5px;	/*文字と文字の間隔をあける*/
 	text-decoration: none;	/*ブラウザ標準のリンク装飾をオフに*/
-	overflow: hidden;	/*おまじない*/
-	float: right;	/*フロートする*/
 }
 article .btn:hover{
 	background-color: #fff;	/*背景色の指定*/
@@ -182,7 +192,6 @@ article .btn:hover{
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;	/*ホバー時の変化をなめらかに*/
 	color: orange;	/*文字色の指定*/
-	overflow: hidden;	/*おまじない*/
 }
 
 footer{
