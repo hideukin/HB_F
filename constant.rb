@@ -6,23 +6,23 @@ class Constant
 
   ### はてなブックマーク フィードURL
   # 人気総合
-  ALL_URL = 'http://b.hatena.ne.jp/hotentry.rss'.freeze
+  ALL_URL = 'https://b.hatena.ne.jp/hotentry.rss'.freeze
   # 一般
-  GENERAL_URL = 'http://b.hatena.ne.jp/hotentry/general.rss'.freeze
+  GENERAL_URL = 'https://b.hatena.ne.jp/hotentry/general.rss'.freeze
   # 世の中
-  SOCIAL_URL = 'http://b.hatena.ne.jp/hotentry/social.rss'.freeze
+  SOCIAL_URL = 'https://b.hatena.ne.jp/hotentry/social.rss'.freeze
   # 政治と経済
-  ECONOMICS_URL = 'http://b.hatena.ne.jp/hotentry/economics.rss'.freeze
+  ECONOMICS_URL = 'https://b.hatena.ne.jp/hotentry/economics.rss'.freeze
   # 暮らし
-  LIFE_URL = 'http://b.hatena.ne.jp/hotentry/life.rss'.freeze
+  LIFE_URL = 'https://b.hatena.ne.jp/hotentry/life.rss'.freeze
   #学び
-  KNOWLEDGE_URL = 'http://b.hatena.ne.jp/hotentry/knowledge.rss'.freeze
+  KNOWLEDGE_URL = 'https://b.hatena.ne.jp/hotentry/knowledge.rss'.freeze
   # テクノロジー
-  IT_URL = 'http://b.hatena.ne.jp/hotentry/it.rss'.freeze
+  IT_URL = 'https://b.hatena.ne.jp/hotentry/it.rss'.freeze
   # おもしろ
-  FUN_URL = 'http://b.hatena.ne.jp/hotentry/fun.rss'.freeze
+  FUN_URL = 'https://b.hatena.ne.jp/hotentry/fun.rss'.freeze
   # エンタメ
-  ENTERTAINMENT = 'http://b.hatena.ne.jp/hotentry/entertainment.rss'.freeze
+  ENTERTAINMENT = 'https://b.hatena.ne.jp/hotentry/entertainment.rss'.freeze
   # アニメとゲーム
-  GAME_URL = 'http://b.hatena.ne.jp/hotentry/game.rss'.freeze
+  GAME_URL = 'https://b.hatena.ne.jp/hotentry/game.rss'.freeze
 end
