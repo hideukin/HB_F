@@ -67,9 +67,9 @@ end
 # return: 対象 URI のはてなブックマーク URI
 def create_bookmarkurl(uri)
   if uri.include?('https://')
-    uri.sub!(/https:\/\//, 'http://b.hatena.ne.jp/entry/s/')
-  # elsif uri.include?('http://')
-  #   uri.sub!(/http:\/\//, 'http://b.hatena.ne.jp/entry/')
+    uri.sub!(/https:\/\//, 'https://b.hatena.ne.jp/entry/s/')
+  elsif uri.include?('http://')
+    uri.sub!(/http:\/\//, 'https://b.hatena.ne.jp/entry/')
   end
   uri
 end
