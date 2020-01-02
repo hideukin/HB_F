@@ -68,8 +68,8 @@ end
 def create_bookmarkurl(uri)
   if uri.include?('https://')
     uri.sub!(/https:\/\//, 'http://b.hatena.ne.jp/entry/s/')
-  elsif uri.include?('http://')
-    uri.sub!(/http:\/\//, 'http://b.hatena.ne.jp/entry/')
+  # elsif uri.include?('http://')
+  #   uri.sub!(/http:\/\//, 'http://b.hatena.ne.jp/entry/')
   end
   uri
 end
@@ -80,8 +80,7 @@ end
 def map_rss_entry(item_nodes)
   rss = []
   item_nodes.each do |item|
-    # bookmarkurl = create_bookmarkurl(item.css('link').text)
-    bookmarkurl = item.css('link').text
+    bookmarkurl = create_bookmarkurl(item.css('link').text)
     content = create_content(item.css('content|encoded').text, bookmarkurl)
     entry = Entry.new( \
       title: item.css('title').text \
