@@ -119,34 +119,18 @@ end
 def maker_feed(uri)
   channel_nodes = @xml_doc.css('//channel')
   @feed = RSS::Maker.make('atom') do |maker|
-    maker.channel.title = channel_nodes.css('title').text
-    maker.channel.description = channel_nodes.css('description').text
-    maker.channel.link = uri
-    maker.channel.about = uri
-    maker.channel.author = 'hatebu_feed'
-    maker.channel.date = Time.now
-    maker.image.title = 'hatebu_feed'
-    maker.image.url = url('logo.png')
-
-    maker.items.do_sort = true
-
+    title = channel_nodes.css('title').text
+    description = channel_nodes.css('description').text
+    maker = build_maker(uri, maker, title, description)
     @rss.each do |entry|
-      item = maker.items.new_item
-      item.title = entry.title
-      item.link = entry.link
-      item.date = entry.date
-      item.description = entry.description
-      item.summary do |summary|
-        summary.type = 'html'
-        summary.content = entry.content
-      end
+      build_item(maker, entry)
     end
   end
 end
 
-def build_maker(uri, channel_nodes, maker)
-  maker.channel.title = channel_nodes.css('title').text
-  maker.channel.description = channel_nodes.css('description').text
+def build_maker(uri, maker, title, description)
+  maker.channel.title = title
+  maker.channel.description = description
   maker.channel.link = uri
   maker.channel.about = uri
   maker.channel.author = 'hatebu_feed'
@@ -156,4 +140,16 @@ def build_maker(uri, channel_nodes, maker)
 
   maker.items.do_sort = true
   maker
+end
+
+def build_item(maker, entry)
+  item = maker.items.new_item
+  item.title = entry.title
+  item.link = entry.link
+  item.date = entry.date
+  item.description = entry.description
+  item.summary do |summary|
+    summary.type = 'html'
+    summary.content = entry.content
+  end
 end
