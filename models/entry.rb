@@ -8,7 +8,17 @@ class Entry
 
   DEFAULT_FILTER_COUNT = 100
 
-  def initialize(title:, link:, description:, date:, bookmarkcount:, imageurl:, content:, bookmarkurl:)
+  # rubocop:disable Metrics/ParameterLists
+  def initialize(
+    title:,
+    link:,
+    description:,
+    date:,
+    bookmarkcount:,
+    imageurl:,
+    content:,
+    bookmarkurl:
+  )
     @title = title
     @link = link
     @description = description
@@ -18,6 +28,7 @@ class Entry
     @content = content
     @bookmarkurl = bookmarkurl
   end
+  # rubocop:enable Metrics/ParameterLists
 
   # 引数に指定したカウントよりも小さければ true を返却する
   # 引数がなければ デフォルトのフィルタ数 をセットして判定する
