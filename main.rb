@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'open-uri'
 require 'rss'
@@ -67,9 +69,9 @@ end
 # return: 対象 URI のはてなブックマーク URI
 def create_bookmarkurl(uri)
   if uri.include?('https://')
-    uri.sub!(/https:\/\//, 'https://b.hatena.ne.jp/entry/s/')
+    uri.sub!(%r{https://}, 'https://b.hatena.ne.jp/entry/s/')
   elsif uri.include?('http://')
-    uri.sub!(/http:\/\//, 'https://b.hatena.ne.jp/entry/')
+    uri.sub!(%r{http://}, 'https://b.hatena.ne.jp/entry/')
   end
   uri
 end
@@ -140,4 +142,18 @@ def maker_feed(uri)
       end
     end
   end
+end
+
+def build_maker(uri, channel_nodes, maker)
+  maker.channel.title = channel_nodes.css('title').text
+  maker.channel.description = channel_nodes.css('description').text
+  maker.channel.link = uri
+  maker.channel.about = uri
+  maker.channel.author = 'hatebu_feed'
+  maker.channel.date = Time.now
+  maker.image.title = 'hatebu_feed'
+  maker.image.url = url('logo.png')
+
+  maker.items.do_sort = true
+  maker
 end
