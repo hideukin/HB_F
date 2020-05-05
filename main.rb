@@ -80,23 +80,24 @@ end
 # item_nodes: item の XML(パース済)
 # return: エントリー情報の配列
 def map_rss_entry(item_nodes)
-  rss = []
-  item_nodes.each do |item|
+  item_nodes.map do |item|
     bookmarkurl = create_bookmarkurl(item.css('link').text)
     content = create_content(item.css('content|encoded').text, bookmarkurl)
-    entry = Entry.new( \
-      title: item.css('title').text \
-    , link: item.css('link').text \
-    , description: item.css('description').text \
-    , date: item.css('dc|date').text \
-    , bookmarkcount: item.css('hatena|bookmarkcount').text.to_i \
-    , imageurl: item.css('hatena|imageurl').text \
-    , content: content \
-    , bookmarkurl: bookmarkurl \
-    )
-    rss.push entry
+    build_entry(item, content, bookmarkurl)
   end
-  rss
+end
+
+def build_entry(item, content, bookmarkurl)
+  Entry.new( \
+    title: item.css('title').text \
+  , link: item.css('link').text \
+  , description: item.css('description').text \
+  , date: item.css('dc|date').text \
+  , bookmarkcount: item.css('hatena|bookmarkcount').text.to_i \
+  , imageurl: item.css('hatena|imageurl').text \
+  , content: content \
+  , bookmarkurl: bookmarkurl \
+  )
 end
 
 # 引数の URI から RSS エントリー情報を取得する
