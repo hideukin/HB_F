@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "nokogiri"
+gem 'nokogiri'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'slim'
