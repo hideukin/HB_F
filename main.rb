@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require 'newrelic_rpm'
 require 'nokogiri'
 require 'open-uri'
 require 'rss'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'slim'
+
 
 require_relative 'models/entry'
 require_relative 'constant'
