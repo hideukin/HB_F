@@ -60,7 +60,7 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_content(content, bookmarkurl)
-  iframe = '<iframe src="' + bookmarkurl + '></iframe>'
+  iframe = '<iframe src="' + bookmarkurl + '" style="min-width: 100%; min-height: 70vh;"></iframe>'
   content + iframe
 end
 
@@ -134,9 +134,9 @@ def build_maker(uri, maker, title, description)
   maker.channel.description = description
   maker.channel.link = uri
   maker.channel.about = uri
-  maker.channel.author = 'hatebu_feed'
+  maker.channel.author = 'hf_b'
   maker.channel.date = Time.now
-  maker.image.title = 'hatebu_feed'
+  maker.image.title = 'hf_b'
   maker.image.url = url('logo.png')
 
   maker.items.do_sort = true
