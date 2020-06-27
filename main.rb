@@ -62,7 +62,7 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_content(content, bookmarkurl)
-  iframe = '<iframe src="' + bookmarkurl + '" style="min-width: 100%; min-height: 70vh;"></iframe>'
+  iframe = '<iframe src="' + bookmarkurl + '" width="100%" height="600" style="min-width: 100%; min-height: 70vh;"></iframe>'
   content + iframe
 end
 
