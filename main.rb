@@ -57,13 +57,11 @@ def filter_rss(uri, filter_count)
   @rss.delete_if { |entry| entry.count_under?(filter_count.to_i) }
 end
 
-# 引数のコンテンツに対し、画像タグとフレームタグを追加する
-# content: 対象のコンテンツ
+# フレームタグを生成する
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
-def create_content(content, bookmarkurl)
-  iframe = '<iframe src="' + bookmarkurl + '" width="800" height="600" style="min-width: 100%; min-height: 100%;"></iframe>'
-  content + iframe
+def create_iframe(bookmarkurl)
+  '<iframe src="' + bookmarkurl + '" width="800" height="600" style="min-width: 100%; min-height: 100%;"></iframe>'
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
@@ -84,7 +82,7 @@ end
 def map_rss_entry(item_nodes)
   item_nodes.map do |item|
     bookmarkurl = create_bookmarkurl(item.css('link').text)
-    content = create_content(item.css('content|encoded').text, bookmarkurl)
+    content = item.css('content|encoded').text + create_iframe(bookmarkurl)
     build_entry(item, content, bookmarkurl)
   end
 end
