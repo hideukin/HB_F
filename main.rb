@@ -61,7 +61,7 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_iframe(bookmarkurl)
-  '<iframe src="' + bookmarkurl + '" width="800" height="600" style="min-width: 100%; min-height: 100%;"></iframe>'
+  '<iframe src="' + bookmarkurl + '" width="800" height="600" style="max-width: 800px; min-width: 100%; min-height: 100%;"></iframe>'
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
