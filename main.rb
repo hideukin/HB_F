@@ -8,7 +8,6 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'slim'
 
-
 require_relative 'models/entry'
 require_relative 'constant'
 
@@ -39,7 +38,7 @@ end
 # 引数からはてなブックマークのフィードURLを取得する
 # category: カテゴリ名
 def get_hatebu_url(category)
-  eval('Constant::' + category.upcase + '_URL')
+  eval("Constant::#{category.upcase}_URL")
 end
 
 # フィードのURLを生成する
@@ -61,7 +60,7 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_iframe(bookmarkurl)
-  '<iframe src="' + bookmarkurl + '" width="800" height="600" style="max-width: 800px; min-width: 100%; min-height: 100%;"></iframe>'
+  "<iframe src=\"#{bookmarkurl}\" width=\"800\" height=\"600\" style=\"max-width: 800px; min-width: 100%; min-height: 100%;\"></iframe>" # rubocop:disable Style/LineLength
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
@@ -129,6 +128,7 @@ def maker_feed(uri)
   end
 end
 
+# rubocop:disable Metrics/AbcSize
 def build_maker(uri, maker, title, description)
   maker.channel.title = title
   maker.channel.description = description
@@ -142,6 +142,7 @@ def build_maker(uri, maker, title, description)
   maker.items.do_sort = true
   maker
 end
+# rubocop:enable Metrics/AbcSize
 
 def build_item(maker, entry)
   item = maker.items.new_item

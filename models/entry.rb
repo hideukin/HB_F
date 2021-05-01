@@ -3,8 +3,7 @@
 # エントリークラス
 # RSS フィードのエントリー
 class Entry
-  attr_accessor :title, :link, :description, :date, :bookmarkcount
-  attr_accessor :imageurl, :content, :bookmarkurl
+  attr_accessor :title, :link, :description, :date, :bookmarkcount, :imageurl, :content, :bookmarkurl
 
   DEFAULT_FILTER_COUNT = 100
 
