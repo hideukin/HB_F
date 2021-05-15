@@ -38,7 +38,7 @@ end
 # 引数からはてなブックマークのフィードURLを取得する
 # category: カテゴリ名
 def get_hatebu_url(category)
-  eval("Constant::#{category.upcase}_URL")
+  Object.const_get("Constant::#{category.upcase}_URL")
 end
 
 # フィードのURLを生成する
