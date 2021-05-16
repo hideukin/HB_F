@@ -107,7 +107,7 @@ def get_rss_nokogiri(uri)
   # open-uriにユーザーエージェントをセット
   opt = { 'User-Agent' => Constant::USER_AGENT }
 
-  @xml_doc = Nokogiri::XML.parse(open(uri, opt))
+  @xml_doc = Nokogiri::XML.parse(URI.open(uri, opt))
 
   item_nodes = @xml_doc.css('//item')
   map_rss_entry item_nodes
