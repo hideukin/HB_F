@@ -56,16 +56,11 @@ def filter_rss(uri, filter_count)
   @rss.delete_if { |entry| entry.count_under?(filter_count.to_i) }
 end
 
-# cssを生成する
-def create_css
-  '<style type="text/css">.article_content { width: 800px !important; }</style>'
-end
-
 # フレームタグを生成する
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_iframe(bookmarkurl)
-  "<iframe src=\"#{bookmarkurl}\" width=\"800\" height=\"600\" style=\"max-width: 800px; min-width: 100%; min-height: 100%;\"></iframe>" # rubocop:disable Layout/LineLength
+  "<iframe src=\"#{bookmarkurl}\" width=\"75vw !important\" height=\"600px\" style=\"max-width: 800px; min-width: 100%; min-height: 100%;\"></iframe>" # rubocop:disable Layout/LineLength
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
@@ -86,7 +81,7 @@ end
 def map_rss_entry(item_nodes)
   item_nodes.map do |item|
     bookmarkurl = create_bookmarkurl(item.css('link').text)
-    content = item.css('content|encoded').text + create_css + create_iframe(bookmarkurl)
+    content = item.css('content|encoded').text + create_iframe(bookmarkurl)
     build_entry(item, content, bookmarkurl)
   end
 end
