@@ -1,12 +1,15 @@
 # HB!F
-指定したカウント数でフィルタしたRSSフィードを返すサイト
+
+Sites that return threshold-filtered RSS feeds.
 
 ## Installation
+
 ```ruby
 bundle install
 ```
 
 ## Usage
+
 ```ruby
 ruby main.rb
 ```
