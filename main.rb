@@ -38,7 +38,7 @@ end
 # 引数からはてなブックマークのフィードURLを取得する
 # category: カテゴリ名
 def get_hatebu_url(category)
-  eval("Constant::#{category.upcase}_URL")
+  Object.const_get("Constant::#{category.upcase}_URL")
 end
 
 # フィードのURLを生成する
@@ -60,7 +60,7 @@ end
 # bookmarkurl: はてなブックマーク URI
 # return: 加工したコンテンツ
 def create_iframe(bookmarkurl)
-  "<iframe src=\"#{bookmarkurl}\" width=\"800\" height=\"600\" style=\"max-width: 800px; min-width: 100%; min-height: 100%;\"></iframe>" # rubocop:disable Style/LineLength
+  "<iframe src=\"#{bookmarkurl}\" width=\"75vw !important\" height=\"600px\" style=\"max-width: 800px; min-width: 100%; min-height: 100%;\"></iframe>" # rubocop:disable Layout/LineLength
 end
 
 # 引数の URI に対するはてなブックマークの URI を返却する
@@ -107,7 +107,7 @@ def get_rss_nokogiri(uri)
   # open-uriにユーザーエージェントをセット
   opt = { 'User-Agent' => Constant::USER_AGENT }
 
-  @xml_doc = Nokogiri::XML.parse(open(uri, opt))
+  @xml_doc = Nokogiri::XML.parse(URI.open(uri, opt))
 
   item_nodes = @xml_doc.css('//item')
   map_rss_entry item_nodes

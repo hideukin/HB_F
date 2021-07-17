@@ -43,6 +43,7 @@ PLATFORMS
 DEPENDENCIES
   newrelic_rpm
   nokogiri
+  rss
   sinatra
   sinatra-contrib
   slim
