@@ -15,9 +15,6 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
-    rexml (3.2.5)
-    rss (0.2.9)
-      rexml
     ruby2_keywords (0.0.5)
     sinatra (2.1.0)
       mustermann (~> 1.0)
