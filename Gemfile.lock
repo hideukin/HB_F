@@ -7,7 +7,7 @@ GEM
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    newrelic_rpm (7.1.0)
+    newrelic_rpm (7.2.0)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -15,10 +15,7 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
-    rexml (3.2.5)
-    rss (0.2.9)
-      rexml
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
