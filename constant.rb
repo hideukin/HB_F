@@ -35,7 +35,7 @@ class Constant
   # おもしろ
   FUN_URL = 'https://b.hatena.ne.jp/hotentry/fun.rss'
   # エンタメ
-  ENTERTAINMENT = 'https://b.hatena.ne.jp/hotentry/entertainment.rss'
+  ENTERTAINMENT_URL = 'https://b.hatena.ne.jp/hotentry/entertainment.rss'
   # アニメとゲーム
   GAME_URL = 'https://b.hatena.ne.jp/hotentry/game.rss'
 end
